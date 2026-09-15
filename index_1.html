@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte Ejecutivo Redragon LATAM — Agosto 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;900&family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0A0A0A;
+    --surface:#151515;
+    --border:#2A2A2A;
+    --red:#E4002B;
+    --muted:#9A9A9A;
+    --white:#F5F5F5;
+    --green:#2ECC71;
+    --yellow:#F2B90F;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'Titillium Web', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:1180px; margin:0 auto; padding:56px 32px 80px; }
+
+  /* ===== HEADER ===== */
+  header{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    border-bottom:2px solid var(--red);
+    padding-bottom:24px; margin-bottom:40px; flex-wrap:wrap; gap:16px;
+  }
+  .eyebrow{
+    font-family:'Saira Condensed', sans-serif; text-transform:uppercase;
+    letter-spacing:0.14em; font-size:13px; color:var(--red); font-weight:700;
+    margin-bottom:8px;
+  }
+  h1{
+    font-family:'Saira Condensed', sans-serif; text-transform:uppercase;
+    font-weight:900; font-size:clamp(28px,4vw,42px); letter-spacing:0.01em; line-height:1.05;
+  }
+  .meta{ text-align:right; color:var(--muted); font-size:13px; line-height:1.6; }
+  .meta b{ color:var(--white); }
+
+  /* ===== KPI STRIP ===== */
+  .kpi-strip{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:1px;
+    background:var(--border); border:1px solid var(--border); margin-bottom:48px;
+  }
+  .kpi{
+    background:var(--surface); padding:20px 14px; text-align:center;
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+  }
+  .kpi .label{ font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:8px; }
+  .kpi .value{ font-family:'Saira Condensed', sans-serif; font-weight:900; font-size:24px; color:var(--white); }
+  .kpi .delta{ font-size:12px; font-weight:700; margin-top:4px; }
+  .up{ color:var(--green); } .down{ color:var(--red); }
+
+  /* ===== SECTION TITLE ===== */
+  .section-title{
+    font-family:'Saira Condensed', sans-serif; text-transform:uppercase;
+    font-weight:900; font-size:20px; letter-spacing:0.06em; color:var(--white);
+    margin:0 0 20px; padding-left:14px; border-left:4px solid var(--red);
+  }
+
+  /* ===== COUNTRY CARDS ===== */
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:20px; margin-bottom:52px; }
+  .card{
+    background:var(--surface); border:1px solid var(--border);
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+    padding:26px 26px 22px; position:relative; border-top:3px solid var(--status);
+  }
+  .card-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+  .country{ font-family:'Saira Condensed', sans-serif; font-weight:900; font-size:22px; text-transform:uppercase; }
+  .country .flag{ margin-right:8px; }
+  .badge{
+    font-family:'Saira Condensed', sans-serif; font-weight:700; font-size:11px;
+    text-transform:uppercase; letter-spacing:0.08em; padding:5px 12px;
+    color:var(--black); background:var(--status);
+    clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+  }
+  .card-kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:18px; }
+  .card-kpis div{ border-left:2px solid var(--border); padding-left:10px; }
+  .card-kpis .label{ font-size:10px; text-transform:uppercase; color:var(--muted); letter-spacing:0.06em; margin-bottom:3px; }
+  .card-kpis .value{ font-family:'Saira Condensed', sans-serif; font-weight:700; font-size:17px; }
+  .card-kpis .delta{ font-size:11px; font-weight:700; }
+  .action{
+    font-size:13.5px; line-height:1.5; color:var(--white);
+    background:rgba(255,255,255,0.03); border:1px solid var(--border);
+    padding:12px 14px; clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+  }
+  .action b{ color:var(--status); text-transform:uppercase; font-family:'Saira Condensed', sans-serif; letter-spacing:0.04em; }
+
+  footer{
+    margin-top:40px; padding-top:20px; border-top:1px solid var(--border);
+    color:var(--muted); font-size:12px; line-height:1.7;
+  }
+  footer b{ color:var(--white); }
+
+  .top-nav{ display:flex; gap:10px; margin-bottom:24px; }
+  .top-nav a{
+    font-family:'Saira Condensed', sans-serif; font-weight:700; font-size:12px;
+    text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);
+    text-decoration:none; padding:7px 14px; border:1px solid var(--border);
+    clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+  }
+  .top-nav a.active{ color:var(--white); border-color:var(--red); background:rgba(228,0,43,0.12); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top-nav">
+    <a href="index.html" class="active">Redragon LATAM</a>
+    <a href="tdagger.html" class="">T-Dagger</a>
+  </div>
+
+  <header>
+    <div>
+      <div class="eyebrow">Redragon LATAM · Performance Marketing</div>
+      <h1>Reporte ejecutivo</h1>
+    </div>
+    <div class="meta">Cierre: <b>31/08/2026</b><br>Argentina · México · Colombia · Perú · Chile</div>
+  </header>
+
+  <div class="kpi-strip">
+    <div class="kpi"><div class="label">Sesiones</div><div class="value">175.593</div><div class="delta up">+5,2%</div></div>
+    <div class="kpi"><div class="label">Usuarios</div><div class="value">137.577</div><div class="delta up">+11,7%</div></div>
+    <div class="kpi"><div class="label">Vistas</div><div class="value">424.103</div><div class="delta up">+11,5%</div></div>
+    <div class="kpi"><div class="label">Rebote</div><div class="value">3,76%</div><div class="delta up">-11,7%</div></div>
+    <div class="kpi"><div class="label">Inv. Meta</div><div class="value">$3.133</div><div class="delta up">+50,6%</div></div>
+    <div class="kpi"><div class="label">Inv. Google</div><div class="value">$3.939</div><div class="delta up">+35,0%</div></div>
+  </div>
+
+  <div class="section-title">Estado por mercado</div>
+  <div class="grid">
+
+    <div class="card" style="--status:var(--red)">
+      <div class="card-head">
+        <div class="country"><span class="flag">🇦🇷</span>Argentina</div>
+        <div class="badge">Urgente</div>
+      </div>
+      <div class="card-kpis">
+        <div><div class="label">Sesiones</div><div class="value">57.923</div><div class="delta down">-14,1%</div></div>
+        <div><div class="label">Usuarios</div><div class="value">44.934</div><div class="delta down">-10,2%</div></div>
+        <div><div class="label">CTR Meta</div><div class="value">3,69%</div><div class="delta down">-3,9%</div></div>
+      </div>
+      <div class="action"><b>Acción:</b> Investigar la caída de clics (-23,2%) y CTR (-36,5%) en Google pese a inversión estable — revisar creativos y segmentación de la campaña que concentra el gasto.</div>
+    </div>
+
+    <div class="card" style="--status:var(--yellow)">
+      <div class="card-head">
+        <div class="country"><span class="flag">🇲🇽</span>México</div>
+        <div class="badge">Atención</div>
+      </div>
+      <div class="card-kpis">
+        <div><div class="label">Sesiones</div><div class="value">~11.742</div><div class="delta up">+48,0%</div></div>
+        <div><div class="label">Inv. Meta</div><div class="value">$799,92</div><div class="delta up">+40,0%</div></div>
+        <div><div class="label">CTR Google</div><div class="value">5,95%</div><div class="delta up">+92,1%</div></div>
+      </div>
+      <div class="action"><b>Acción:</b> Resolver la campaña de mayor gasto en Google, que sigue en cero conversiones por segundo mes consecutivo — evaluar pausar o revisar tracking/landing.</div>
+    </div>
+
+    <div class="card" style="--status:var(--yellow)">
+      <div class="card-head">
+        <div class="country"><span class="flag">🇨🇴</span>Colombia</div>
+        <div class="badge">Atención</div>
+      </div>
+      <div class="card-kpis">
+        <div><div class="label">Sesiones</div><div class="value">15.691</div><div class="delta up">+37,6%</div></div>
+        <div><div class="label">Usuarios</div><div class="value">11.908</div><div class="delta up">+39,9%</div></div>
+        <div><div class="label">Inv. Meta</div><div class="value">$543,86</div><div class="delta up">+202,5%</div></div>
+      </div>
+      <div class="action"><b>Acción:</b> Reactivar los canales de Google en $0 (Demanda, Display, Search) — con Pmax casi triplicado, hay espacio para diversificar y bajar la dependencia de un solo canal.</div>
+    </div>
+
+    <div class="card" style="--status:var(--green)">
+      <div class="card-head">
+        <div class="country"><span class="flag">🇵🇪</span>Perú</div>
+        <div class="badge">Objetivo</div>
+      </div>
+      <div class="card-kpis">
+        <div><div class="label">Sesiones</div><div class="value">~34.638</div><div class="delta up">+20,0%</div></div>
+        <div><div class="label">Usuarios</div><div class="value">29.962</div><div class="delta up">+32,7%</div></div>
+        <div><div class="label">CTR Meta</div><div class="value">2,85%</div><div class="delta up">+30,8%</div></div>
+      </div>
+      <div class="action"><b>Acción:</b> Vigilar la caída de CTR en Google (-59,8%) pese al buen volumen de clics, para confirmar que no sea una dilución real de calidad.</div>
+    </div>
+
+    <div class="card" style="--status:var(--green)">
+      <div class="card-head">
+        <div class="country"><span class="flag">🇨🇱</span>Chile</div>
+        <div class="badge">Objetivo</div>
+      </div>
+      <div class="card-kpis">
+        <div><div class="label">Sesiones</div><div class="value">23.126</div><div class="delta up">+22,3%</div></div>
+        <div><div class="label">Usuarios</div><div class="value">17.533</div><div class="delta up">+29,1%</div></div>
+        <div><div class="label">CTR Meta</div><div class="value">3,04%</div><div class="delta up">+28,3%</div></div>
+      </div>
+      <div class="action"><b>Acción:</b> Monitorear que el salto de inversión (+42,9%) no vuelva a subir la frecuencia, que viene bajando.</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <b>Nota metodológica:</b> Urgente = deterioro en el KPI principal del mercado pese a inversión estable o mayor; Atención = riesgo estructural o punto abierto de meses anteriores sin resolver; Objetivo = mercado en la dirección esperada, con puntos menores a vigilar.<br>
+    <b>Nota de datos:</b> México y Perú — el dashboard de origen (Vibrander/Latamly) duplica por error el total LATAM en la tarjeta "Sitio Web" de esas páginas; las sesiones mostradas acá usan el valor real del gráfico de tendencia mensual. Pendiente de corrección con la agencia.<br>
+    Fuente: reporte Vibrander/Latamly, agosto 2026.
+  </footer>
+
+</div>
+</body>
+</html>
